@@ -33,7 +33,7 @@ function Input(props) {
         getRandomPokemon();
     }
     
-    useEffect(getRandomPokemon, []);
+    useEffect(() => {getRandomPokemon()}, []);
 
     return (
         <form>
