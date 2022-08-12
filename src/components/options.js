@@ -5,6 +5,7 @@ function Options(props) {
     const [sliderValue, setSliderValue] = useState(8);
     const [numGens, setNumGens] = useState(8);
     const [genNums, setGenNums] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     function getNumGens() {
         axios.get('https://pokeapi.co/api/v2/generation').then((res) => {setNumGens(res.data['count'])});
@@ -16,16 +17,16 @@ function Options(props) {
             axios.get(`https://pokeapi.co/api/v2/generation/${i + 1}`).then((res) => {oldGenNums.push((res.data['pokemon_species']).length)});
             setGenNums(oldGenNums);
         }
+        setLoading(false);
     }
 
     function setMaxPokeNum() {
+        if (loading) { return }
         let sum = 0;
-        console.log(genNums);
         for (let i = 0; i < sliderValue; i++) {
             sum += genNums[i];
         }
         props.setMaxPoke(sum);
-        console.log('maxPoke: ', props.maxPoke);
     }
 
     function sliderHandler(e) {
