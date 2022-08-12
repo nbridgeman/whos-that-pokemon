@@ -9,7 +9,7 @@ function App() {
   const [imgUrl, setImgUrl] = useState('');
   const [inputText, setInputText] = useState('');
   const [minPoke, setMinPoke] = useState(1);
-  const [maxPoke, setMaxPoke] = useState(493);
+  const [maxPoke, setMaxPoke] = useState(905);
 
   return (
     <div className="App">
