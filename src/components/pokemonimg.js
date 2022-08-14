@@ -1,11 +1,11 @@
 import React from 'react';
 
 function PokemonImg(props) {
-    
+    const {imgUrl} = props;
 
     return (
         <div className='pokeImg'>
-            <img src={props.imgUrl} alt='pokemon'></img>
+            <img src={imgUrl} alt='pokemon'></img>
         </div>
     )
 }

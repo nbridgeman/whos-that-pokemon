@@ -10,15 +10,31 @@ function App() {
   const [inputText, setInputText] = useState('');
   const [minPoke, setMinPoke] = useState(1);
   const [maxPoke, setMaxPoke] = useState(905);
+  const [autoAdv, setAutoAdv] = useState(true);
+
+  const childProps = {
+    pokemon,
+    setPokemon,
+    imgUrl,
+    setImgUrl,
+    inputText,
+    setInputText,
+    minPoke,
+    setMinPoke,
+    maxPoke,
+    setMaxPoke,
+    autoAdv,
+    setAutoAdv,
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         Who's that Pokemon?
       </header>
-      <PokemonImg imgUrl={imgUrl}/>
-      <Input pokemon={pokemon} setPokemon={setPokemon} imgUrl={imgUrl} setImgUrl={setImgUrl} inputText={inputText} setInputText={setInputText} minPoke={minPoke} maxPoke={maxPoke}/>
-      <Options minPoke={minPoke} setMinPoke={setMinPoke} maxPoke={maxPoke} setMaxPoke={setMaxPoke}/>
+      <PokemonImg {...childProps}/>
+      <Input {...childProps}/>
+      <Options {...childProps}/>
     </div>
   );
 }
