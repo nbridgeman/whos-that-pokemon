@@ -56,7 +56,7 @@ function Slider(props) {
     return (
         <div>
             <input name={'min'} type={'range'} min={'1'} max={maxSliderVal} onInput={sliderHandler} step={1} value={minSliderVal} />
-            <input name={'max'} type={'range'} min={minSliderVal} max={numGens} onInput={sliderHandler} step={1} />
+            <input name={'max'} type={'range'} min={minSliderVal} max={numGens} onInput={sliderHandler} step={1} value={maxSliderVal}/>
             <p>Gen {minSliderVal} - Gen {maxSliderVal}</p>
         </div>
     )

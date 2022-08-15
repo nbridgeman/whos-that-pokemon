@@ -6,7 +6,7 @@ function Name(props) {
     if (revealed) {
         return (
             <div>
-                <h1>{pokemon}</h1>
+                <h3>{pokemon}</h3>
             </div>
         )
     }

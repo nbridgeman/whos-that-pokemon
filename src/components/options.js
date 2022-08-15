@@ -9,6 +9,7 @@ function Options(props) {
         setOptShown(!optShown);
     }
 
+    // TO:DO slider doesn't stay on selected value when toggling options menu
     if (optShown) {
         return (
             <div className='options'>

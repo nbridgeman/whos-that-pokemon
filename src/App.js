@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Who's that Pokemon?
+        <h1>Who's that Pokemon?</h1>
       </header>
       <PokemonImg {...childProps}/>
       <Name {...childProps}/>
