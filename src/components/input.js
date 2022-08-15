@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Input(props) {
-    const {pokemon, setPokemon, setImgUrl, inputText, setInputText, minPoke, maxPoke, autoAdv} = props;
+    const {pokemon, setPokemon, setImgUrl, inputText, setInputText, minPoke, maxPoke, autoAdv, revealed, setRevealed} = props;
 
     // const [imgExists, setImgExists] = useState(true);
 
@@ -18,7 +18,7 @@ function Input(props) {
         //     console.log('here');
         //     getRandomPokemon();
         // }
-        await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokeNum}`).then((res) => {setPokemon(res.data['name'].replace('-', ' '))});
+        await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokeNum}`).then((res) => {setPokemon(res.data['name'])});
         setImgUrl(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeNum}.png`); // TO-DO: bug when image doesn't exist
     }
 
@@ -26,20 +26,31 @@ function Input(props) {
         setInputText(e.target.value);
     }
 
+    function checkIfEqual() {
+        let newInput = inputText.replace(/[^\w\s]|_/g, '').replace(/\s+/g, '').toLowerCase();
+        let newPokemon = pokemon.replace(/[^\w\s]|_/g, '').replace(/\s+/g, '').toLowerCase();
+        if (newInput === newPokemon) {
+            return true;
+        }
+        return false;
+    }
+
     function submitHandler(e) {
         e.preventDefault();
-        if ((inputText.toLowerCase()) === pokemon) {
+        if (checkIfEqual()) {
             if (autoAdv) {
+                setRevealed(false);
                 getRandomPokemon();
                 setInputText('');
             } else {
-                console.log('correct'); // TO-DO: idk something else
+                setRevealed(true); // TO-DO: idk something else
             }
         }
     }
 
     function skipHandler(e) {
         e.preventDefault();
+        setRevealed(false);
         getRandomPokemon();
         setInputText('');
     }

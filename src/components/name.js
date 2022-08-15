@@ -9,6 +9,12 @@ function Name(props) {
                 <h3>{pokemon}</h3>
             </div>
         )
+    } else {
+        return (
+            <div>
+                <h3>-----</h3>
+            </div>
+        )
     }
 }
 
