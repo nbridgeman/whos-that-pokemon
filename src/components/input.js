@@ -4,16 +4,16 @@ import axios from 'axios';
 function Input(props) {
     const {pokemon, setPokemon, setImgUrl, inputText, setInputText, minPoke, maxPoke, autoAdv} = props;
 
-    const [imgExists, setImgExists] = useState(true);
+    // const [imgExists, setImgExists] = useState(true);
 
-    function checkHasImage(pokeNum) {
-        axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeNum}`).then((res) => {if (res.data['sprites']['other']['official-artwork']['front_default'] === null) {console.log('here'); setImgExists(false)} else {setImgExists(true)}});
-    }
+    // function checkHasImage(pokeNum) {
+    //     axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeNum}`).then((res) => {if (res.data['sprites']['other']['official-artwork']['front_default'] === null) {console.log('here'); setImgExists(false)} else {setImgExists(true)}});
+    // }
 
     async function getRandomPokemon() {
         let pokeNum = Math.floor(Math.random() * (maxPoke - minPoke + 1)) + minPoke;
-        checkHasImage(pokeNum);
-        console.log(imgExists);
+        // checkHasImage(pokeNum);
+        // console.log(imgExists);
         // if (imgExists === false) {
         //     console.log('here');
         //     getRandomPokemon();
