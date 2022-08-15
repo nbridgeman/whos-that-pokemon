@@ -3,17 +3,29 @@ import Slider from './options/slider.js';
 import AutoAdvance from './options/autoadvance.js';
 
 function Options(props) {
+    const {setMaxPoke, setMinPoke} = props;
+
     const [optShown, setOptShown] = useState(false);
+    const [minSliderVal, setMinSliderVal] = useState(1);
+    const [maxSliderVal, setMaxSliderVal] = useState(8);
+
+    const sliderProps = {
+        setMaxPoke,
+        setMinPoke,
+        minSliderVal,
+        setMinSliderVal,
+        maxSliderVal,
+        setMaxSliderVal,
+    }
 
     function setShown() {
         setOptShown(!optShown);
     }
 
-    // TO:DO slider doesn't stay on selected value when toggling options menu
     if (optShown) {
         return (
             <div className='options'>
-                <Slider {...props}/>
+                <Slider {...sliderProps}/>
                 <AutoAdvance {...props}/>
                 <button onClick={setShown}>Hide</button>
             </div>
