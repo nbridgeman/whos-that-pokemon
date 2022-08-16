@@ -14,6 +14,7 @@ function App() {
   const [maxPoke, setMaxPoke] = useState(905);
   const [autoAdv, setAutoAdv] = useState(true);
   const [revealed, setRevealed] = useState(false);
+  const [artworkUrl, setArtworkUrl] = useState('other/official-artwork/');
 
   const childProps = {
     pokemon,
@@ -30,6 +31,8 @@ function App() {
     setAutoAdv,
     revealed,
     setRevealed,
+    artworkUrl,
+    setArtworkUrl,
   }
 
   return (

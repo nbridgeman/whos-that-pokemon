@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Input(props) {
-    const {pokemon, setPokemon, setImgUrl, inputText, setInputText, minPoke, maxPoke, autoAdv, revealed, setRevealed} = props;
+    const {pokemon, setPokemon, setImgUrl, inputText, setInputText, minPoke, maxPoke, autoAdv, revealed, setRevealed, artworkUrl} = props;
 
     function getRandomPokemon() {
         let pokeNum = Math.floor(Math.random() * (maxPoke - minPoke + 1)) + minPoke;
         axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokeNum}`).then((res) => {setPokemon(res.data['name'])});
-        setImgUrl(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeNum}.png`); // TO-DO: bug when image doesn't exist
+        setImgUrl(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${artworkUrl}${pokeNum}.png`); // TO-DO: bug when image doesn't exist
     }
 
     function inputHandler(e) {
@@ -43,7 +43,7 @@ function Input(props) {
         setInputText('');
     }
     
-    useEffect(() => {getRandomPokemon()}, [minPoke, maxPoke]);
+    useEffect(() => {getRandomPokemon()}, [minPoke, maxPoke, artworkUrl]);
 
     return (
         <form>
