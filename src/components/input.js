@@ -4,9 +4,7 @@ import Reveal from './reveal';
 
 function Input(props) {
     const {pokemon, setPokemon, setImgUrl, inputText, setInputText, minPoke, maxPoke, autoAdv, revealed, setRevealed, artworkUrl, pokemonSeen, pokemonCorrect, setPokemonSeen, setPokemonCorrect} = props;
-
     const [pokeNum, setPokeNum] = useState(0);
-    const [loading, setLoading] = useState(true);
 
     function getImg() {
         // TO-DO: Bug when image does not exist
