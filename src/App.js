@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Input from './components/input.js';
 import PokemonImg from './components/pokemonimg.js';
 import Options from './components/options.js';
-import Buttons from './components/buttons.js';
 import Name from './components/name.js';
+import Score from './components/score.js';
 import './App.css';
 
 function App() {
@@ -15,6 +15,8 @@ function App() {
   const [autoAdv, setAutoAdv] = useState(true);
   const [revealed, setRevealed] = useState(false);
   const [artworkUrl, setArtworkUrl] = useState('other/official-artwork/');
+  const [pokemonSeen, setPokemonSeen] = useState(0);
+  const [pokemonCorrect, setPokemonCorrect] = useState(0);
 
   const childProps = {
     pokemon,
@@ -33,6 +35,10 @@ function App() {
     setRevealed,
     artworkUrl,
     setArtworkUrl,
+    pokemonSeen,
+    setPokemonSeen,
+    pokemonCorrect,
+    setPokemonCorrect,
   }
 
   return (
@@ -40,11 +46,13 @@ function App() {
       <header className="App-header">
         <h1>Who's that Pokemon?</h1>
       </header>
-      <PokemonImg {...childProps}/>
+      <div className='info'>
+        <Options {...childProps}/>
+        <PokemonImg {...childProps}/>
+        <Score {...childProps}/>
+      </div>
       <Name {...childProps}/>
       <Input {...childProps}/>
-      <Buttons {...childProps}/>
-      <Options {...childProps}/>
     </div>
   );
 }

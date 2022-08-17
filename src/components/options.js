@@ -4,7 +4,7 @@ import AutoAdvance from './options/autoadvance.js';
 import ToggleSprite from './options/togglesprite.js';
 
 function Options(props) {
-    const {setMaxPoke, setMinPoke, setArtworkUrl} = props;
+    const {setMaxPoke, setMinPoke, setArtworkUrl, setPokemonSeen, setPokemonCorrect} = props;
 
     const [optShown, setOptShown] = useState(false);
     const [minSliderVal, setMinSliderVal] = useState(1);
@@ -18,6 +18,8 @@ function Options(props) {
         setMinSliderVal,
         maxSliderVal,
         setMaxSliderVal,
+        setPokemonSeen,
+        setPokemonCorrect,
     }
 
     const spriteProps = {
@@ -33,15 +35,17 @@ function Options(props) {
     if (optShown) {
         return (
             <div className='options'>
+                <button onClick={setShown}>Hide Options</button>
                 <Slider {...sliderProps}/>
                 <AutoAdvance {...props}/>
                 <ToggleSprite {...spriteProps}/>
-                <button onClick={setShown}>Hide</button>
             </div>
         )
     } else {
         return (
-            <button onClick={setShown}>Options</button>
+            <div className='options'>
+                <button onClick={setShown}>Show Options</button>
+            </div>
         )
     }
     

@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Reveal from './reveal';
 
 function Input(props) {
-    const {pokemon, setPokemon, setImgUrl, inputText, setInputText, minPoke, maxPoke, autoAdv, revealed, setRevealed, artworkUrl} = props;
+    const {pokemon, setPokemon, setImgUrl, inputText, setInputText, minPoke, maxPoke, autoAdv, revealed, setRevealed, artworkUrl, pokemonSeen, pokemonCorrect, setPokemonSeen, setPokemonCorrect} = props;
+
+    const [pokeNum, setPokeNum] = useState(0);
+    const [loading, setLoading] = useState(true);
+
+    function getImg() {
+        // TO-DO: Bug when image does not exist
+        setImgUrl(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${artworkUrl}${pokeNum}.png`); 
+    }
 
     function getRandomPokemon() {
-        let pokeNum = Math.floor(Math.random() * (maxPoke - minPoke + 1)) + minPoke;
-        axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokeNum}`).then((res) => {setPokemon(res.data['name'])});
-        setImgUrl(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${artworkUrl}${pokeNum}.png`); // TO-DO: bug when image doesn't exist
+        let pokeId = Math.floor(Math.random() * (maxPoke - minPoke + 1)) + minPoke;
+        setPokeNum(pokeId);
+        axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokeId}`).then((res) => {setPokemon(res.data['name'])});
     }
 
     function inputHandler(e) {
@@ -27,11 +36,17 @@ function Input(props) {
         e.preventDefault();
         if (checkIfEqual()) {
             if (autoAdv) {
+                if (!revealed) {
+                    setPokemonCorrect(pokemonCorrect + 1);
+                }
                 setRevealed(false);
+                setPokemonSeen(pokemonSeen + 1);
                 getRandomPokemon();
                 setInputText('');
             } else {
-                setRevealed(true); // TO-DO: idk something else
+                setRevealed(true);
+                setPokemonSeen(pokemonSeen + 1);
+                setPokemonCorrect(pokemonCorrect + 1);
             }
         }
     }
@@ -39,16 +54,19 @@ function Input(props) {
     function skipHandler(e) {
         e.preventDefault();
         setRevealed(false);
+        setPokemonSeen(pokemonSeen + 1);
         getRandomPokemon();
         setInputText('');
     }
     
-    useEffect(() => {getRandomPokemon()}, [minPoke, maxPoke, artworkUrl]);
+    useEffect(() => {getImg()}, [pokemon, artworkUrl]);
+    useEffect(() => {getRandomPokemon()}, [minPoke, maxPoke]);
 
     return (
         <form>
             <input value={inputText} onChange={inputHandler}></input>
             <button onClick={submitHandler} type="submit">Guess</button>
+            <Reveal {...props} />
             <button onClick={skipHandler}>Skip</button>
         </form>
     )

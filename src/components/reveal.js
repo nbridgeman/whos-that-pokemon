@@ -1,9 +1,10 @@
 import React from "react";
 
-function Buttons(props) {
+function Reveal(props) {
     const {revealed, setRevealed} = props;
 
     function revealHandler(e) {
+        e.preventDefault();
         setRevealed(!revealed);
     }
 
@@ -12,4 +13,4 @@ function Buttons(props) {
     )
 }
 
-export default Buttons;
+export default Reveal;

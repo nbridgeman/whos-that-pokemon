@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Slider(props) {
-    const {setMaxPoke, setMinPoke, minSliderVal, setMinSliderVal, maxSliderVal, setMaxSliderVal} = props;
+    const {setMaxPoke, setMinPoke, minSliderVal, setMinSliderVal, maxSliderVal, setMaxSliderVal, setPokemonCorrect, setPokemonSeen} = props;
 
     const [numGens, setNumGens] = useState(8);
     const [genNums, setGenNums] = useState([]);
@@ -51,23 +51,23 @@ function Slider(props) {
         e.preventDefault();
         setMinPokeNum();
         setMaxPokeNum();
+        setPokemonSeen(0);
+        setPokemonCorrect(0);
     }
 
     useEffect(() => {getNumGens(); getGenNums();}, []);
     
     return (
-        <div>
-            <form>
-                <label>
-                    <input name={'min'} type={'range'} min={'1'} max={maxSliderVal} onInput={sliderHandler} step={1} value={minSliderVal} />
-                    Min: Gen {minSliderVal}
-                </label>
-                <label>
-                    <input name={'max'} type={'range'} min={minSliderVal} max={numGens} onInput={sliderHandler} step={1} value={maxSliderVal}/>
-                    Max: Gen {maxSliderVal}
-                </label>
-                <button onClick={submitHandler}>Apply</button>
-            </form>
+        <div className='sliders'>
+            <label>
+                <input name={'min'} type={'range'} min={'1'} max={maxSliderVal} onInput={sliderHandler} step={1} value={minSliderVal} />
+                Min: Gen {minSliderVal}
+            </label>
+            <label>
+                <input name={'max'} type={'range'} min={minSliderVal} max={numGens} onInput={sliderHandler} step={1} value={maxSliderVal}/>
+                Max: Gen {maxSliderVal}
+            </label>
+            <button onClick={submitHandler}>Apply</button>
         </div>
     )
 }
