@@ -1,21 +1,55 @@
 .App {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #153B50;
   }
+
+.App-header {
+  display: flex;
+  height: 10vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2vh;
+  color: white;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 25vh;
+  width: 100vw;
+}
 
 .info {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  width: 100vw;
+  height: 50vh;
 }
 
 .options {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 12.5vw;
+  color: white;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  width: 12.5vw;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -24,4 +58,34 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.pokeImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: auto;
+  padding: 2vw 2vw;
+  border: 2px #8A8E91 solid;
+  border-radius: 20px;
+  background-color: white;
+}
+
+img {
+  height: 50vh;
+  width: auto;
+}
+
+button {
+  color: black;
+  background-color: white;
+  border: 2px #8A8E91 solid;
+  padding: 1vh 1vw;
+  border-radius: 10px;
+}
+
+h3 {
+  color: white;
+  font-size: 3vh;
 }

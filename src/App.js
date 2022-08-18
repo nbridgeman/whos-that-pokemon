@@ -51,8 +51,10 @@ function App() {
         <PokemonImg {...childProps}/>
         <Score {...childProps}/>
       </div>
-      <Name {...childProps}/>
-      <Input {...childProps}/>
+      <div className='input'>
+        <Name {...childProps}/>
+        <Input {...childProps}/>
+      </div>
     </div>
   );
 }
