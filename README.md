@@ -1,1 +1,1 @@
-https://62fd590b4e7fed0cbf351aa4--stunning-pasca-d5996e.netlify.app/
+https://stunning-pasca-d5996e.netlify.app/
