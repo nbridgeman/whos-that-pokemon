@@ -35,7 +35,7 @@ function Options(props) {
     if (optShown) {
         return (
             <div className='options'>
-                <button onClick={setShown}>Hide Options</button>
+                <button onClick={setShown} className='option-button'>Hide Options</button>
                 <Slider {...sliderProps}/>
                 <AutoAdvance {...props}/>
                 <ToggleSprite {...spriteProps}/>
@@ -44,7 +44,7 @@ function Options(props) {
     } else {
         return (
             <div className='options'>
-                <button onClick={setShown}>Show Options</button>
+                <button onClick={setShown} className='option-button'>Show Options</button>
             </div>
         )
     }

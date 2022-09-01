@@ -10,13 +10,13 @@ function Name(props) {
     if (revealed) {
         return (
             <div>
-                <h3>{getPokemonName()}</h3>
+                <p className='poke-name'>{getPokemonName()}</p>
             </div>
         )
     } else {
         return (
             <div>
-                <h3>-----</h3>
+                <p className='poke-name'>-----</p>
             </div>
         )
     }

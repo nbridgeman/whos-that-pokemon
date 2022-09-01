@@ -60,14 +60,14 @@ function Slider(props) {
     return (
         <div className='sliders'>
             <label>
-                <input name={'min'} type={'range'} min={'1'} max={maxSliderVal} onInput={sliderHandler} step={1} value={minSliderVal} />
+                <input name={'min'} type={'range'} min={'1'} max={maxSliderVal} onInput={sliderHandler} step={1} value={minSliderVal} className='slider min'/>
                 Min: Gen {minSliderVal}
             </label>
             <label>
-                <input name={'max'} type={'range'} min={minSliderVal} max={numGens} onInput={sliderHandler} step={1} value={maxSliderVal}/>
+                <input name={'max'} type={'range'} min={minSliderVal} max={numGens} onInput={sliderHandler} step={1} value={maxSliderVal} className='slider max'/>
                 Max: Gen {maxSliderVal}
             </label>
-            <button onClick={submitHandler}>Apply</button>
+            <button onClick={submitHandler} className='apply'>Apply</button>
         </div>
     )
 }

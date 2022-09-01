@@ -62,10 +62,10 @@ function Input(props) {
 
     return (
         <form>
-            <input value={inputText} onChange={inputHandler}></input>
-            <button onClick={submitHandler} type="submit">Guess</button>
+            <input value={inputText} onChange={inputHandler} className='text-box'></input>
+            <button onClick={submitHandler} type="submit" className='submit'>Guess</button>
             <Reveal {...props} />
-            <button onClick={skipHandler}>Skip</button>
+            <button onClick={skipHandler} className='skip'>Skip</button>
         </form>
     )
 }

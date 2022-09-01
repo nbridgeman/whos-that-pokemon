@@ -18,7 +18,7 @@ function ToggleSprite(props) {
     return (
         <div>
             <label>
-                <input type='checkbox' checked={isChecked} onChange={handleChange}/>
+                <input type='checkbox' checked={isChecked} onChange={handleChange} className='toggle'/>
                 Toggle Sprites
             </label>
         </div>

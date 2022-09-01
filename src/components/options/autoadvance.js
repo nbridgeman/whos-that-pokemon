@@ -10,7 +10,7 @@ function AutoAdvance(props) {
     return (
         <div>
             <label>
-                <input type="checkbox" checked={autoAdv} onChange={changeHandler}/>
+                <input type="checkbox" checked={autoAdv} onChange={changeHandler} className='autoadv'/>
                 Auto Advance
             </label>
         </div>

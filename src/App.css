@@ -85,7 +85,7 @@ button {
   border-radius: 10px;
 }
 
-h3 {
+.count, .poke-name {
   color: white;
   font-size: 3vh;
 }
