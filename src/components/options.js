@@ -8,7 +8,7 @@ function Options(props) {
 
     const [optShown, setOptShown] = useState(false);
     const [minSliderVal, setMinSliderVal] = useState(1);
-    const [maxSliderVal, setMaxSliderVal] = useState(8);
+    const [maxSliderVal, setMaxSliderVal] = useState(9);
     const [isChecked, setIsChecked] = useState(false);
 
     const sliderProps = {
