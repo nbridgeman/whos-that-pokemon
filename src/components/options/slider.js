@@ -4,7 +4,7 @@ import axios from 'axios';
 function Slider(props) {
     const {setMaxPoke, setMinPoke, minSliderVal, setMinSliderVal, maxSliderVal, setMaxSliderVal, setPokemonCorrect, setPokemonSeen} = props;
 
-    const [numGens, setNumGens] = useState(8);
+    const [numGens, setNumGens] = useState(9);
     const [genNums, setGenNums] = useState([]);
     const [loading, setLoading] = useState(true);
 
