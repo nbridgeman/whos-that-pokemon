@@ -17,6 +17,7 @@ function App() {
   const [artworkUrl, setArtworkUrl] = useState('other/official-artwork/');
   const [pokemonSeen, setPokemonSeen] = useState(0);
   const [pokemonCorrect, setPokemonCorrect] = useState(0);
+  const [correct, setCorrect] = useState(false);
 
   const childProps = {
     pokemon,
@@ -39,6 +40,8 @@ function App() {
     setPokemonSeen,
     pokemonCorrect,
     setPokemonCorrect,
+    correct,
+    setCorrect
   }
 
   return (
@@ -46,11 +49,9 @@ function App() {
       <header className="App-header">
         <h1>Who's that Pokemon?</h1>
       </header>
-      <div className='info'>
-        <Options {...childProps}/>
-        <PokemonImg {...childProps}/>
-        <Score {...childProps}/>
-      </div>
+      <Options {...childProps}/>
+      <PokemonImg {...childProps}/>
+      <Score {...childProps}/>
       <div className='input'>
         <Name {...childProps}/>
         <Input {...childProps}/>

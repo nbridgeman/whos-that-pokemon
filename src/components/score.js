@@ -12,7 +12,7 @@ function Score(props) {
     return (
         <div className='score'>
             <p className='count'>{pokemonCorrect} / {pokemonSeen}</p>
-            <button onClick={clickHandler} className='reset'>Reset</button>
+            <button onClick={clickHandler} className='reset'>Start Over</button>
         </div>
     )
 }

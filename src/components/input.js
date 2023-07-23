@@ -3,8 +3,9 @@ import axios from 'axios';
 import Reveal from './reveal';
 
 function Input(props) {
-    const {pokemon, setPokemon, setImgUrl, inputText, setInputText, minPoke, maxPoke, autoAdv, revealed, setRevealed, artworkUrl, pokemonSeen, pokemonCorrect, setPokemonSeen, setPokemonCorrect} = props;
+    const {pokemon, setPokemon, setImgUrl, inputText, setInputText, minPoke, maxPoke, autoAdv, revealed, setRevealed, artworkUrl, pokemonSeen, pokemonCorrect, setPokemonSeen, setPokemonCorrect, setCorrect} = props;
     const [pokeNum, setPokeNum] = useState(0);
+    const [buttonText, setButtonText] = useState("Guess");
 
     function getImg() {
         // TO-DO: Bug when image does not exist
@@ -32,29 +33,27 @@ function Input(props) {
 
     function submitHandler(e) {
         e.preventDefault();
-        if (checkIfEqual()) {
-            if (autoAdv) {
-                if (!revealed) {
-                    setPokemonCorrect(pokemonCorrect + 1);
-                }
+        if (revealed) {
+            getRandomPokemon();
+            setInputText('');
+            setRevealed(false);
+            setButtonText("Guess");
+        } else {
+            setPokemonSeen(pokemonSeen + 1);
+            if (checkIfEqual()) {
+                setPokemonCorrect(pokemonCorrect + 1);
+                setCorrect(true);
                 setRevealed(false);
-                setPokemonSeen(pokemonSeen + 1);
                 getRandomPokemon();
                 setInputText('');
             } else {
+                setCorrect(false);
                 setRevealed(true);
                 setPokemonSeen(pokemonSeen + 1);
-                setPokemonCorrect(pokemonCorrect + 1);
+                setButtonText("Next"); 
+                
             }
         }
-    }
-
-    function skipHandler(e) {
-        e.preventDefault();
-        setRevealed(false);
-        setPokemonSeen(pokemonSeen + 1);
-        getRandomPokemon();
-        setInputText('');
     }
     
     useEffect(() => {getImg()}, [pokemon, artworkUrl]);
@@ -63,9 +62,9 @@ function Input(props) {
     return (
         <form>
             <input value={inputText} onChange={inputHandler} className='text-box'></input>
-            <button onClick={submitHandler} type="submit" className='submit'>Guess</button>
-            <Reveal {...props} />
-            <button onClick={skipHandler} className='skip'>Skip</button>
+            <button onClick={submitHandler} type="submit" className='submit'>{buttonText}</button>
+            {/* /* <Reveal {...props} />
+            <button onClick={skipHandler} className='skip'>Skip</button> */}
         </form>
     )
 }

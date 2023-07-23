@@ -1,12 +1,12 @@
 import React from 'react';
 
 function Name(props) {
-    const {pokemon, revealed} = props;
+    const {pokemon, revealed, autoAdv, correct, pokemonSeen} = props;
 
     function getPokemonName() {
         return pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
     }
-
+    
     if (revealed) {
         return (
             <div>

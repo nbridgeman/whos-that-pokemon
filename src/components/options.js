@@ -37,7 +37,7 @@ function Options(props) {
             <div className='options'>
                 <button onClick={setShown} className='option-button'>Hide Options</button>
                 <Slider {...sliderProps}/>
-                <AutoAdvance {...props}/>
+                {/* <AutoAdvance {...props}/> */}
                 <ToggleSprite {...spriteProps}/>
             </div>
         )
